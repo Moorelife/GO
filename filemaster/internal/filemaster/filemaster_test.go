@@ -4,32 +4,32 @@ import (
 	"testing"
 )
 
-palindromes := []string{
-	"negen"
-	"kayak"
-	"parterretrap"
-	""
+var palindromes = []string{
+	"negen",
+	"kayak",
+	"parterretrap",
+	"",
 }
 
 func TestIsPalindromeTrue(t *testing.T) {
-	for word := range palindromes {
+	for _, word := range palindromes {
 		if !IsPalindrome(word) {
-			t.Error("%v should have IsPalindrome() returning true", word)
+			t.Errorf("%s should have IsPalindrome() returning true", word)
 		}
 	}
 }
 
-nonPalindromes := []string {
-	"difficult"
-	"dangerous"
-	"edge case"
-	"dummy"
+var nonPalindromes = []string{
+	"difficult",
+	"dangerous",
+	"edge case",
+	"dummy",
 }
 
 func TestIsPalindromeFalse(t *testing.T) {
-	for word := range palindromes {
+	for _, word := range nonPalindromes {
 		if IsPalindrome(word) {
-			t.Error("%v should have IsPalindrome() returning true", word)
+			t.Errorf("%s should have IsPalindrome() returning false", word)
 		}
 	}
 }
