@@ -1,10 +1,24 @@
 package filemaster
 
-func IsPalindrome(word string) bool {
-	for i := range word {
-		if word[i] != word[len(word)-i-1] {
-			return false
-		}
+import (
+	"runtime"
+
+	"github.com/Moorelife/GO/filemaster/pkg/system"
+)
+
+type FileMaster struct {
+	system.System
+}
+
+func NewFileMaster() *FileMaster {
+	instance := FileMaster{
+		system.System(runtime.GOARCH, runtime.GOOS, nil),
 	}
-	return true
+	return &instance
+}
+
+var DriveLetters = []string{}
+
+func (f *FileMaster) RecognizeDrives() {
+
 }

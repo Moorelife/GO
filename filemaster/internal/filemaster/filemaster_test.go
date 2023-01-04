@@ -1,35 +1,22 @@
 package filemaster
 
 import (
+	"runtime"
 	"testing"
 )
 
-var palindromes = []string{
-	"negen",
-	"kayak",
-	"parterretrap",
-	"",
-}
-
-func TestIsPalindromeTrue(t *testing.T) {
-	for _, word := range palindromes {
-		if !IsPalindrome(word) {
-			t.Errorf("%s should have IsPalindrome() returning true", word)
-		}
+func TestNewFileMaster(t *testing.T) {
+	fm := NewFileMaster()
+	if fm == nil {
+		t.Error("NewFileMaster returned nil")
 	}
-}
-
-var nonPalindromes = []string{
-	"difficult",
-	"dangerous",
-	"edge case",
-	"dummy",
-}
-
-func TestIsPalindromeFalse(t *testing.T) {
-	for _, word := range nonPalindromes {
-		if IsPalindrome(word) {
-			t.Errorf("%s should have IsPalindrome() returning false", word)
-		}
+	if fm.System.Architecture != runtime.GOARCH {
+		t.Errorf("NewFileMaster should have Architecture %s\n", runtime.GOARCH)
+	}
+	if fm.System.OperatingSystem != runtime.GOOS {
+		t.Errorf("NewFileMaster should have Operating System %s\n", runtime.GOOS)
+	}
+	if len(fm.System.Drives) > 0 {
+		t.Errorf("NewFileMaster should not have any Drives yet, but has %v", fm.System.Drives)
 	}
 }
