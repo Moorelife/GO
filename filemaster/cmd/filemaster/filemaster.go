@@ -1,4 +1,4 @@
-// FileMaster is a program that sccans all local drives, and finds all unique versions
+// FileMaster is a program that scans all local drives, and finds all unique versions
 // of all files available on these drives. In time it will be extended to cleverly
 // reorganize those folders the user wants.
 package main
@@ -14,6 +14,7 @@ func main() {
 
 	Master := filemaster.NewFileMaster()
 	Master.RecognizeDrives()
+	// Master.ScanForFoldersAndFiles()
 	Master.Print()
 
 }

@@ -21,6 +21,10 @@ func (f *FileMaster) RecognizeDrives() {
 	f.system.GetDrives()
 }
 
+func (f *FileMaster) ScanForFoldersAndFiles() {
+	f.system.ScanForFoldersAndFiles()
+}
+
 func (f *FileMaster) Print() {
 	f.system.Print()
 }

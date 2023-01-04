@@ -22,6 +22,7 @@ func (s *System) Print() {
 	fmt.Printf("OperatingSystem:   %s\n", s.operatingSystem)
 	fmt.Println("Drives:")
 	for _, drive := range s.drives {
+		drive.ScanForFoldersAndFiles()
 		drive.Print()
 	}
 }
@@ -36,4 +37,11 @@ func (s *System) GetDrives() {
 		}
 	}
 	return
+}
+
+func (s *System) ScanForFoldersAndFiles() {
+	for _, drive := range s.drives {
+		drive.ScanForFoldersAndFiles()
+		drive.Print()
+	}
 }
