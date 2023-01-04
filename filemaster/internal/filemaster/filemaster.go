@@ -1,18 +1,16 @@
 package filemaster
 
 import (
-	"runtime"
-
 	"github.com/Moorelife/GO/filemaster/pkg/system"
 )
 
 type FileMaster struct {
-	system.System
+	system *system.System
 }
 
 func NewFileMaster() *FileMaster {
 	instance := FileMaster{
-		system.System(runtime.GOARCH, runtime.GOOS, nil),
+		system: system.NewSystem(),
 	}
 	return &instance
 }
@@ -20,5 +18,9 @@ func NewFileMaster() *FileMaster {
 var DriveLetters = []string{}
 
 func (f *FileMaster) RecognizeDrives() {
+	f.system.GetDrives()
+}
 
+func (f *FileMaster) Print() {
+	f.system.Print()
 }
